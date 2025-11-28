@@ -10,34 +10,30 @@
 
 package main
 
-import (
-	"fmt"
-)
+// func main() {
+// 	// канал для передачи данных воркерам
+// 	ch := make(chan int, 10)
+// 	// кол-во воркеров
+// 	n := 5
 
-func main() {
-	// канал для передачи данных воркерам
-	ch := make(chan int, 10)
-	// кол-во воркеров
-	n := 5
+// 	// запускаем воркеры
+// 	Workers(ch, n)
 
-	// запускаем воркеры
-	Workers(ch, n)
-
-	// бесконечно пишем данные в канал
-	for {
-		ch <- 1
-	}
-}
+// 	// бесконечно пишем данные в канал
+// 	for {
+// 		ch <- 1
+// 	}
+// }
 
 // Workers запускает count кол-во воркеров-горутин
 // воркеры читают данные из канал бесконечно и выводят их в stdout
-func Workers(ch chan int, count int) {
+// func Workers(ch chan int, count int) {
 
-	for i := 0; i < count; i++ {
-		go func(ch chan int) {
-			for {
-				fmt.Println(<-ch)
-			}
-		}(ch)
-	}
-}
+// 	for i := 0; i < count; i++ {
+// 		go func(ch chan int) {
+// 			for {
+// 				fmt.Println(<-ch)
+// 			}
+// 		}(ch)
+// 	}
+// }
