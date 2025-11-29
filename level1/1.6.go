@@ -8,6 +8,7 @@ import (
 )
 
 // 1) завершение горутины по условию
+// горутина проверяет условие и делает return
 func condition() {
 	go func() {
 		for i := 0; i < 5; i++ {
@@ -20,17 +21,20 @@ func condition() {
 }
 
 // 2) завершение горутины по сигналу из канала
+// выполняем полезную работу и ждем, пока в канал поступит сигнал, после чего горутина закрывается
 func chanSignal() {
 	quit := make(chan struct{})
 
 	go func() {
-		select {
-		case <-quit:
-			fmt.Println("Горутина завершается")
-			return
-		default:
-			time.Sleep(1 * time.Second)
-			fmt.Println("Работаю...")
+		for {
+			select {
+			case <-quit:
+				fmt.Println("Горутина завершается")
+				return
+			default:
+				time.Sleep(1 * time.Second)
+				fmt.Println("Работаю...")
+			}
 		}
 	}()
 
@@ -39,6 +43,7 @@ func chanSignal() {
 }
 
 // 3) Горутина завершается, когда канал закрыт и чтение возвращает ok = false
+// Горутина завершится автоматически, когда range обнаружит закрытие канала, закроется когда запись прекратится
 func chanClose() {
 	ch := make(chan int)
 
@@ -62,6 +67,7 @@ func goexit() {
 }
 
 // 5) Остановка горутины через context.WithCancel
+// Горутина завершится, когда cancel() вызовет завершение контекста и ctx.Done() станет читаемым
 func contCancel() {
 	ctx, cancel := context.WithCancel(context.Background())
 
@@ -83,9 +89,10 @@ func contCancel() {
 
 }
 
-// Остановка горутины через context.WithTimeout
+// 6) Остановка горутины через context.WithTimeout
+// Горутина завершится, когда истечёт таймаут и ctx.Done() подаст сигнал о закрытии контекста
 func contTimeout() {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 
 	go func() {
@@ -99,17 +106,22 @@ func contTimeout() {
 			}
 		}
 	}()
+	time.Sleep(5 * time.Second)
 }
 
-// завершаем работу горутины по истечению времени time.After
+// 7) завершаем работу горутины по истечению времени time.After
+// Горутина завершится, когда сработает таймер из time.After
 func after() {
+	timer := time.After(5 * time.Second)
 	go func() {
-		select {
-		case <-time.After(5 * time.Second):
-			fmt.Println("Завершаемся после time.After")
-			return
-		default:
-			fmt.Println("Работа...")
+		for {
+			select {
+			case <-timer:
+				fmt.Println("Завершаемся после time.After")
+				return
+			default:
+				fmt.Println("Работа...")
+			}
 		}
 	}()
 }
