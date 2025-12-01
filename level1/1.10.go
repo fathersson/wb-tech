@@ -1,27 +1,25 @@
 package main
 
-import "fmt"
-
 // Создаем слайс с дробными значениями флоат, в нем хранятся изначальные значения температур
 // Создаем мапу с ключом int и значением []float32 в ней будут хранится групированные данные
 // С помощью switch-case и условий пополняем нашу мапу значениями, производя группировку
-func main() {
-	a := []float32{-25.4, -27.0, 13.0, 19.0, 15.5, 24.5, -21.0, 32.5}
+// func main() {
+// 	a := []float32{-25.4, -27.0, 13.0, 19.0, 15.5, 24.5, -21.0, 32.5}
 
-	m := make(map[int][]float32)
+// 	m := make(map[int][]float32)
 
-	for _, v := range a {
-		switch {
-		case v <= -20 && v > -30:
-			m[-20] = append(m[-20], v)
-		case v >= 10 && v < 20:
-			m[10] = append(m[10], v)
-		case v >= 20 && v < 30:
-			m[20] = append(m[20], v)
-		case v >= 30:
-			m[30] = append(m[30], v)
-		}
-	}
+// 	for _, v := range a {
+// 		switch {
+// 		case v <= -20 && v > -30:
+// 			m[-20] = append(m[-20], v)
+// 		case v >= 10 && v < 20:
+// 			m[10] = append(m[10], v)
+// 		case v >= 20 && v < 30:
+// 			m[20] = append(m[20], v)
+// 		case v >= 30:
+// 			m[30] = append(m[30], v)
+// 		}
+// 	}
 
-	fmt.Println(m)
-}
+// 	fmt.Println(m)
+// }
