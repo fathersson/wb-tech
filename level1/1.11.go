@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // Решение задачи двумя способами
 
 // 1-й вариант это сравнение ключа мапы со значением в слайсе "b"
@@ -16,33 +14,33 @@ import "fmt"
 // в первом цикле записываем все элементы "a" в ключи мапы "m"
 // вторым циклом проверяем, присутствует ли элемент из "b" в "a"
 // и записываем результат в слайс res
-func main() {
-	a := []int{1, 2, 3}
-	b := []int{2, 3, 4}
-	res := make([]int, 0, len(a))
+// func main() {
+// 	a := []int{1, 2, 3}
+// 	b := []int{2, 3, 4}
+// 	res := make([]int, 0, len(a))
 
-	m := make(map[int]struct{})
+// 	m := make(map[int]struct{})
 
-	for _, v := range a {
-		m[v] = struct{}{}
-	}
+// 	for _, v := range a {
+// 		m[v] = struct{}{}
+// 	}
 
-	for _, v := range b {
-		if _, ok := m[v]; ok {
-			res = append(res, v)
-		}
-	}
+// 	for _, v := range b {
+// 		if _, ok := m[v]; ok {
+// 			res = append(res, v)
+// 		}
+// 	}
 
-	fmt.Println(res)
+// 	fmt.Println(res)
 
-	// 2 вариант решения
-	// for _, va := range a {
-	// 	for _, vb := range b {
-	// 		if va == vb {
-	// 			c = append(c, vb)
-	// 			break
-	// 		}
-	// 	}
-	// }
-	// fmt.Println(c)
-}
+// 2 вариант решения
+// for _, va := range a {
+// 	for _, vb := range b {
+// 		if va == vb {
+// 			c = append(c, vb)
+// 			break
+// 		}
+// 	}
+// }
+// fmt.Println(c)
+// }
