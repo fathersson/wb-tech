@@ -5,10 +5,10 @@ import (
 	"reflect"
 )
 
-func main() {
-	// m := make(chan (string))
-	test(nil)
-}
+// func main() {
+// 	// m := make(chan (string))
+// 	test(nil)
+// }
 
 func test(v any) {
 	switch x := v.(type) {
