@@ -1,13 +1,11 @@
 package main
 
-import "fmt"
-
-func main() {
-	s := []int{9, 4, 6, 3, 1, 8, 2, 5, 7, 0}
-	fmt.Println(s)
-	quickSort(s)
-	fmt.Println(s)
-}
+// func main() {
+// 	s := []int{9, 4, 6, 3, 1, 8, 2, 5, 7, 0}
+// 	fmt.Println(s)
+// 	quickSort(s)
+// 	fmt.Println(s)
+// }
 
 func quickSort(s []int) {
 	if len(s) < 2 {
