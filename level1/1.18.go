@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"sync"
 	"sync/atomic"
 )
@@ -65,28 +64,28 @@ func workMutex(c *CounterM, wg *sync.WaitGroup) {
 
 // ------------------------------------------------------------------------------
 
-func main() {
-	// 1. Демонстрация работы ATOMIC
-	ca := CounterA{}
-	var wgA sync.WaitGroup
+// func main() {
+// 	// 1. Демонстрация работы ATOMIC
+// 	ca := CounterA{}
+// 	var wgA sync.WaitGroup
 
-	wgA.Add(3) // Инициализируем счетчик WaitGroup для ATOMIC
-	go workAtomic(&ca, &wgA)
-	go workAtomic(&ca, &wgA)
-	go workAtomic(&ca, &wgA)
+// 	wgA.Add(3) // Инициализируем счетчик WaitGroup для ATOMIC
+// 	go workAtomic(&ca, &wgA)
+// 	go workAtomic(&ca, &wgA)
+// 	go workAtomic(&ca, &wgA)
 
-	wgA.Wait() // Главный поток спит, пока счетчик wgA не станет 0
-	fmt.Printf("Atomic результат: %d\n", ca.Value())
+// 	wgA.Wait() // Главный поток спит, пока счетчик wgA не станет 0
+// 	fmt.Printf("Atomic результат: %d\n", ca.Value())
 
-	// 2. Демонстрация работы MUTEX
-	cm := CounterM{}
-	var wgM sync.WaitGroup
+// 	// 2. Демонстрация работы MUTEX
+// 	cm := CounterM{}
+// 	var wgM sync.WaitGroup
 
-	wgM.Add(3) // Инициализируем WaitGroup для MUTEX
-	go workMutex(&cm, &wgM)
-	go workMutex(&cm, &wgM)
-	go workMutex(&cm, &wgM)
+// 	wgM.Add(3) // Инициализируем WaitGroup для MUTEX
+// 	go workMutex(&cm, &wgM)
+// 	go workMutex(&cm, &wgM)
+// 	go workMutex(&cm, &wgM)
 
-	wgM.Wait() // Ожидаем завершения всех горутин
-	fmt.Printf("Mutex результат:  %d\n", cm.Value())
-}
+// 	wgM.Wait() // Ожидаем завершения всех горутин
+// 	fmt.Printf("Mutex результат:  %d\n", cm.Value())
+// }
