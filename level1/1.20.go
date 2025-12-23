@@ -1,14 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 )
 
-func main() {
-	s := "ехал грека через реку, видит грека в реке рак"
-	fmt.Println(reverseWords(s))
-}
+// func main() {
+// 	s := "ехал грека через реку, видит грека в реке рак"
+// 	fmt.Println(reverseWords(s))
+// }
 
 func reverseWords(s string) string {
 	// Builder позволяет использовать буфер и не создавать новые строки для каждого слова
