@@ -5,12 +5,12 @@ import (
 	"time"
 )
 
-func main() {
-	fmt.Println("Запускаем таймер и блокируем горутину!")
-	Sleep(3 * time.Second)
-	fmt.Println("Конец программы!")
+// func main() {
+// 	fmt.Println("Запускаем таймер и блокируем горутину!")
+// 	Sleep(3 * time.Second)
+// 	fmt.Println("Конец программы!")
 
-}
+// }
 
 func Sleep(d time.Duration) {
 	timer := time.NewTimer(d)
