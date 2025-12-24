@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -30,11 +29,11 @@ func (p *Point) DistanceTo(p2 *Point) float64 {
 	return math.Sqrt(math.Pow(p2.x-p.x, 2) + math.Pow(p2.y-p.y, 2))
 }
 
-func main() {
-	p1 := NewPoint(2.1, 9.6)
-	p2 := NewPoint(8.7, 5.9)
+// func main() {
+// 	p1 := NewPoint(2.1, 9.6)
+// 	p2 := NewPoint(8.7, 5.9)
 
-	distance := p1.DistanceTo(p2)
+// 	distance := p1.DistanceTo(p2)
 
-	fmt.Printf("Расстояние между точками: %.2f\n", distance)
-}
+// 	fmt.Printf("Расстояние между точками: %.2f\n", distance)
+// }
