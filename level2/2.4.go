@@ -1,17 +1,17 @@
 package main
 
-func main() {
-	ch := make(chan int)
-	go func() {
-		for i := 0; i < 10; i++ {
-			ch <- i
-		}
-		// close(ch) // Канал закрыт, приемник выйдет из цикла без ошибки
-	}()
-	for n := range ch {
-		println(n)
-	}
-}
+// func main() {
+// 	ch := make(chan int)
+// 	go func() {
+// 		for i := 0; i < 10; i++ {
+// 			ch <- i
+// 		}
+// 		// close(ch) // Канал закрыт, приемник выйдет из цикла без ошибки
+// 	}()
+// 	for n := range ch {
+// 		println(n)
+// 	}
+// }
 
 // Что выведет программа?
 // Числа от 0 до 9 включительно
