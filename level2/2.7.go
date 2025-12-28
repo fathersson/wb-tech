@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
@@ -45,15 +44,15 @@ func merge(a, b <-chan int) <-chan int {
 	return c
 }
 
-func main() {
-	rand.Seed(time.Now().Unix())
-	a := asChan(1, 3, 5, 7)
-	b := asChan(2, 4, 6, 8)
-	c := merge(a, b)
-	for v := range c {
-		fmt.Print(v)
-	}
-}
+// func main() {
+// 	rand.Seed(time.Now().Unix())
+// 	a := asChan(1, 3, 5, 7)
+// 	b := asChan(2, 4, 6, 8)
+// 	c := merge(a, b)
+// 	for v := range c {
+// 		fmt.Print(v)
+// 	}
+// }
 
 // Программа выведет числа от 1 до 8, но их порядок будет случайным
 // (за исключением того, что внутри своих групп 1,3,5,7 и 2,4,6,8
